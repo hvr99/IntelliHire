@@ -1,0 +1,26 @@
+server:
+  port: ${AUTH_SERVICE_PORT:8081}
+
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobrec}
+    username: ${DB_USER:auth_svc}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: auth
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    schemas: auth
+    default-schema: auth
+
+jwt:
+  secret: ${JWT_SECRET:very_secret_default_key_that_is_at_least_256_bits_long_placeholder}
+  expiry-minutes: ${JWT_EXPIRY_MINUTES:60}
