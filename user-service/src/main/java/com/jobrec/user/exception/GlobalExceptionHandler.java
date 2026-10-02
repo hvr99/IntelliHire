@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.security.access.AccessDeniedException;
+import com.jobrec.user.ml.MlUnavailableException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -36,6 +37,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(MlUnavailableException.class)
+    public ResponseEntity<Map<String, Object>> handleMlUnavailable(MlUnavailableException ex) {
+        return buildErrorResponse(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), null);
     }
     
     @ExceptionHandler(Exception.class)

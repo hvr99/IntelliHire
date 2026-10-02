@@ -1,0 +1,1 @@
+"""Lightweight resume extraction service."""

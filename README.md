@@ -38,6 +38,12 @@ This project is strictly designed to run within a **4 GB RAM development environ
 - **No Heavy Containers or Message Brokers**: Do not use Docker Desktop, Testcontainers, Redis, Kafka, RabbitMQ, or Kubernetes.
 - **Service Isolation & Stubs**: When developing or testing a service, use lightweight mock/stub clients for downstream dependencies rather than spinning up other services.
 - **Resource Discipline**: Avoid running unnecessary background tools or heavy IDE extensions.
+- For detailed instructions, refer to [docs/4gb-development.md](docs/4gb-development.md).
+
+## Documentation
+- [API Contracts](docs/api-contracts.md): Complete list of REST endpoints and payloads.
+- [Integration Checklist](docs/integration-checklist.md): Step-by-step guide to testing service integrations.
+- [4 GB RAM Development Guide](docs/4gb-development.md): Instructions for managing memory effectively.
 
 ## Local PostgreSQL Requirement
 - PostgreSQL 16 must run locally as a native Windows service or lightweight background process.

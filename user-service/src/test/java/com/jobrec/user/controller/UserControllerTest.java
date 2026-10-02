@@ -7,6 +7,7 @@ import com.jobrec.user.repository.ProfileRepository;
 import com.jobrec.user.repository.SkillRepository;
 import com.jobrec.user.security.InternalApiKeyFilter;
 import com.jobrec.user.security.SecurityConfig;
+import com.jobrec.user.skill.SkillNormalizer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -25,7 +27,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(UserController.class)
-@Import({SecurityConfig.class, InternalApiKeyFilter.class})
+@Import({SecurityConfig.class, InternalApiKeyFilter.class, SkillNormalizer.class})
+@TestPropertySource(properties = "internal.api-key=test_internal_key")
 class UserControllerTest {
 
     @Autowired MockMvc mockMvc;
